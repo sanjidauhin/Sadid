@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Mownota</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            position: relative;
+        }
+        .heading {
+            margin-bottom: 20px;
+            color: #0066ff; /* Blue */
+        }
+        .love-box {
+            width: 200px;
+            height: 200px;
+            background-color: #000; /* Black */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 20px;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: rotate 2s linear infinite;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .love-box h2 {
+            margin: 0;
+            color: white;
+            font-size: 24px;
+        }
+        .images-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .image-box {
+            width: 360px; /* Double the width */
+            height: 360px; /* Double the height */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .question-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -100px; /* Adjusted to lift the question box upward */
+        }
+        .question-box {
+            width: 300px; /* Rectangular width */
+            height: 100px; /* Rectangular height */
+            background-color: #8B0000; /* Blood Red */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        .question-box h2 {
+            margin-top: 0;
+            color: white;
+        }
+        .question-box button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #8B0000; /* Blood Red */
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .question-box button:hover {
+            background-color: #FF5F6D; /* Light Red */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">আমার প্রিয়তমা মৌনতা</h1>
+        <div class="love-box">
+            <h2>ভালোবাসি তোমায় রাত্রি</h2>
+        </div>
+        <div class="images-container">
+            <div class="image-box">
+                <img src="https://github.com/sanjidauhin/Hei-Mownota/assets/163626650/4ea8ad8f-ce81-45ba-b490-93b22d6102fc" alt="Image 1">
+            </div>
+            <div class="image-box">
+                <img src="https://github.com/sanjidauhin/Hei-Mownota/assets/163626650/432fc3c7-d4fb-4604-92fb-2377540b0c1e" alt="Image 2">
+            </div>
+            <div class="image-box">
+                <img src="https://github.com/sanjidauhin/Hei-Mownota/assets/163626650/2ad311eb-7fde-4e81-8e83-2cd10a88689e" alt="Image 3">
+            </div>
+            <div class="image-box">
+                <img src="https://github.com/sanjidauhin/Hei-Mownota/assets/163626650/b5394c53-d321-4e38-928b-1e575f2d2256" alt="Image 4">
+            </div>
+        </div>
+        <div class="question-container">
+            <div class="question-box" id="questionBox">
+                <h2>ভালোবাসো আমায়??</h2>
+                <div>
+                    <button onclick="nextQuestion('yes')">হ্যাঁ</button>
+                    <button onclick="nextQuestion('no')">না</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let answers = [];
+
+        function nextQuestion(answer) {
+            answers.push(answer);
+            if (answers.length === 1) {
+                document.getElementById('questionBox').innerHTML = `
+                    <h2>আজীবন আমার থাকবে?</h2>
+                    <div>
+                        <button onclick="nextQuestion('yes')">হ্যাঁ</button>
+                        <button onclick="nextQuestion('no')">না</button>
+                    </div>
+                `;
+            } else if (answers.length === 2) {
+                document.getElementById('questionBox').innerHTML = `
+                    <h2>বিয়ে করবে আমায়?</h2>
+                    <div>
+                        <button onclick="nextQuestion('yes')">কবুল</button>
+                        <button onclick="nextQuestion('no')">ভাতার আছে আরো</button>
+                    </div>
+                `;
+            } else {
+                let allYes = answers.every(answer => answer === 'yes');
+                if (allYes) {
+                    window.location.href = "love-page.html";
+                } else {
+                    window.location.href = "hate-page.html";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
